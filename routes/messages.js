@@ -62,7 +62,7 @@ router.post('/:id/read', ensureLoggedIn, async function(req, res, next) {
         const to_username = req.user.username
         const m = await Message.get(req.params.id);
         
-        if (m.to_user.username !== username) {
+        if (m.to_user.username !== to_username) {
             throw new ExpressError("Not allowed to read this message", 401);
         }
 
